@@ -14,6 +14,23 @@ this.communicator = com.kraftbyte.tappy.TappyBleCommunicator.getCurrent();
 this.wrapper = new TappyWrapper({ communicator: this.communicator });
 ```
 
+To start listening for events, you have to call setupNotifications on the communicator:
+```
+this.communicator.setupNotifications();
+```
+
+A sample of a complete setup:
+```
+this.wrapper.stop();
+window.setTimeout(()=>{
+  this.communicator.setupNotifications();
+  window.setTimeout(()=>{
+    this.wrapper.detectNdef(false, 0);
+  }, 500);
+}, 500);
+```
+
+
 Now you can use the standard interface of the wrapper described [here](https://github.com/TapTrack/TcmpTappyWrapperJs)
 
 
